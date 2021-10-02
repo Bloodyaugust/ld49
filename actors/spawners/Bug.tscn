@@ -8,6 +8,7 @@
 ]]
 z_index = -1
 script = ExtResource( 1 )
+type = "insect"
 spawn_move_range = 100.0
 spawn_rate = 5.0
 spawn_scene = ExtResource( 2 )

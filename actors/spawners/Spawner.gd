@@ -1,5 +1,6 @@
 extends Sprite
 
+export var type:String
 export var requirements:Array
 export var spawn_move_range:float
 export var spawn_rate:float
@@ -17,6 +18,10 @@ func _draw():
 func _ready():
   update()
   _time_to_spawn = spawn_rate
+
+  var _new_spawners_state = Store.state.spawners.duplicate(true)
+  _new_spawners_state[type] += 1
+  Store.set_state("spawners", _new_spawners_state)
 
 func _process(delta):
   if _active_spawns < max_spawns:

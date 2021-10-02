@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://actors/resources/GameResourceData.gd" type="Script" id=1]
+[ext_resource path="res://actors/spawners/Rodent.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+type = "plant"
+spawner_scene = ExtResource( 2 )
+spawner_requirements = {
+"amount": 2,
+"spawner_type": "rodent",
+"type": "plant"
+}

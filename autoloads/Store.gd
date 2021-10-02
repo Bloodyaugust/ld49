@@ -10,6 +10,14 @@ var state: Dictionary = {
     "pond": 0,
     "grass": 0,
   },
+  "resource_types": {
+    "water": 0,
+    "plant": 0,
+  },
+  "spawners": {
+    "insect": 0,
+    "rodent": 0,
+  },
   "active_ability": null
  }
 

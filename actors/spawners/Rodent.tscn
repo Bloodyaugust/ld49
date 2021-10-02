@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://actors/spawners/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://actors/creatures/Bug.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/rodent_spawner.png" type="Texture" id=3]
+
+[node name="Rodent" type="Sprite" groups=[
+"spawners",
+]]
+z_index = -1
+texture = ExtResource( 3 )
+region_rect = Rect2( 2.328, 2.386, 2.883, 2.039 )
+script = ExtResource( 1 )
+type = "rodent"
+spawn_move_range = 300.0
+spawn_rate = 15.0
+spawn_scene = ExtResource( 2 )
+max_spawns = 4

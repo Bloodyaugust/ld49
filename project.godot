@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://abilities/ability.gd"
 }, {
 "base": "Resource",
+"class": "GameResourceData",
+"language": "GDScript",
+"path": "res://actors/resources/GameResourceData.gd"
+}, {
+"base": "Resource",
 "class": "PersistentStore",
 "language": "GDScript",
 "path": "res://scripts/classes/PersistentStore.gd"
 } ]
 _global_script_class_icons={
 "Ability": "",
+"GameResourceData": "",
 "PersistentStore": ""
 }
 
