@@ -6,12 +6,11 @@
 [node name="Deer" type="Sprite" groups=[
 "spawners",
 ]]
-scale = Vector2( 0.33, 0.33 )
 z_index = -1
 region_rect = Rect2( 2.328, 2.386, 2.883, 2.039 )
 script = ExtResource( 1 )
 type = "deer"
 spawn_move_range = 500.0
-spawn_rate = 30.0
+spawn_rate = 1.0
 spawn_scene = ExtResource( 2 )
 max_spawns = 1
