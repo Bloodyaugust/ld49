@@ -15,6 +15,9 @@ var _active_spawns:int
 func _draw():
   draw_arc(Vector2.ZERO, spawn_move_range, 0, 2 * PI, 16, Color.red)
 
+func _on_spawn_tree_exited() -> void:
+  _active_spawns -= 1
+
 func _ready():
   update()
   _time_to_spawn = spawn_rate
@@ -32,6 +35,7 @@ func _process(delta):
 
     _new_creature.global_position = global_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
     _new_creature.spawner = self
+    _new_creature.connect("tree_exited", self, "_on_spawn_tree_exited")
 
     _creature_container.add_child(_new_creature)
 
