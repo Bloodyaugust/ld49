@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/resources/GameResource.gd" type="Script" id=1]
+[ext_resource path="res://sprites/pond.png" type="Texture" id=2]
+
+[node name="Pond" type="Sprite" groups=[
+"resources",
+]]
+z_index = -2
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+starting_amount = 9999999
+type = "water"
+resource_name = "pond"

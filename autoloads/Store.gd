@@ -5,7 +5,11 @@ signal state_changed(state_key, substate)
 var persistent_store:PersistentStore
 var state: Dictionary = {
   "client_view": "",
-  "game": ""
+  "game": "",
+  "resources": {
+    "pond": 0,
+  },
+  "active_ability": null
  }
 
 func save_persistent_store() -> void:

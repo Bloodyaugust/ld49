@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "Ability",
+"language": "GDScript",
+"path": "res://abilities/ability.gd"
+}, {
+"base": "Resource",
 "class": "PersistentStore",
 "language": "GDScript",
 "path": "res://scripts/classes/PersistentStore.gd"
 } ]
 _global_script_class_icons={
+"Ability": "",
 "PersistentStore": ""
 }
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/creatures/Creature.gd" type="Script" id=1]
+[ext_resource path="res://sprites/fly.png" type="Texture" id=2]
+
+[node name="Bug" type="Sprite"]
+scale = Vector2( 0.194641, 0.253806 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+consume_meter = 1e+09
+speed = 15.0
+type = "insect"
+wander_time_max = 3.5
+wander_time_min = 1.75
+wander_interval_max = 0.75
+wander_interval_min = 0.25
