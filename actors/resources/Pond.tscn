@@ -6,10 +6,10 @@
 [node name="Pond" type="Sprite" groups=[
 "resources",
 ]]
+scale = Vector2( 0.2, 0.2 )
 z_index = -2
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 exclusion_radius = 50.0
 starting_amount = 9999999
-type = "water"
-resource_name = "pond"
+type = "pond"

@@ -7,14 +7,12 @@ func start_game() -> void:
   Store.set_state("resources", {
     "pond": 0,
     "grass": 0,
-  })
-  Store.set_state("resource_types", {
-    "water": 0,
-    "plant": 0,
+    "berries": 0,
   })
   Store.set_state("spawners", {
     "insect": 0,
     "rodent": 0,
+    "deer": 0,
   })
 
   Store.set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)

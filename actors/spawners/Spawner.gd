@@ -1,7 +1,6 @@
 extends Sprite
 
 export var type:String
-export var requirements:Array
 export var spawn_move_range:float
 export var spawn_rate:float
 export var spawn_scene:PackedScene

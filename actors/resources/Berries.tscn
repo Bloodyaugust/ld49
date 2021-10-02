@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/resources/GameResource.gd" type="Script" id=1]
+[ext_resource path="res://sprites/berries.png" type="Texture" id=2]
+
+[node name="Berries" type="Sprite" groups=[
+"resources",
+]]
+scale = Vector2( 0.33, 0.33 )
+z_index = -2
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+exclusion_radius = 50.0
+starting_amount = 100
+type = "berries"

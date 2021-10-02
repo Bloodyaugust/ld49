@@ -3,6 +3,7 @@ extends Node
 const ability_resources:Array = [
   preload("res://abilities/Pond.tres"),
   preload("res://abilities/Grass.tres"),
+  preload("res://abilities/Berries.tres"),
 ]
 const ability_usable_color:Color = Color(1, 1, 1, 0.3)
 const ability_unusable_color:Color = Color(1, 0, 0, 0.3)

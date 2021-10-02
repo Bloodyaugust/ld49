@@ -32,7 +32,24 @@ func consume(_amount:int) -> void:
 
 func _draw():
   draw_line(Vector2.ZERO, to_local(spawner.global_position), Color.red)
-  draw_line(Vector2.ZERO, to_local(_wander_target), Color.green)
+  if _state == creature_states.WANDERING:
+    draw_line(Vector2.ZERO, to_local(_wander_target), Color.green)
+  if GDUtil.reference_safe(_resource_target) && _state == creature_states.CONSUMING:
+    draw_line(Vector2.ZERO, to_local(_resource_target.global_position), Color.blue)
+
+func _find_resource_target() -> void:
+  var _resources = get_tree().get_nodes_in_group("resources")
+  _resources += get_tree().get_nodes_in_group("creatures")
+
+  var _eligible_resources = []
+
+  for _resource in _resources:
+    if _resource.type in consumes && _resource.global_position.distance_to(spawner.global_position) <= spawner.spawn_move_range:
+      _eligible_resources.append(_resource)
+
+  if _eligible_resources.size() > 0:
+    _eligible_resources.sort_custom(self, "_sort_resources")
+    _resource_target = _eligible_resources[0]
 
 func _process(delta):
   update()
@@ -49,33 +66,26 @@ func _process(delta):
     _wander_target = spawner.global_position + (Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * rand_range(0, spawner.spawn_move_range))
     print("wandering")
 
-  if _current_consume_meter >= consume_meter:
-    var _resources = get_tree().get_nodes_in_group("resources")
-    _resources += get_tree().get_nodes_in_group("creatures")
+  if _current_consume_meter >= consume_meter && _state != creature_states.CONSUMING:
+      _find_resource_target()
 
-    var _eligible_resources = []
-
-    for _resource in _resources:
-      if _resource.type in consumes && _resource.global_position.distance_to(spawner.global_position) <= spawner.spawn_move_range:
-        _eligible_resources.append(_resource)
-
-    if _eligible_resources.size() > 0:
-      _eligible_resources.sort_custom(self, "_sort_resources")
-      _resource_target = _eligible_resources[0]
-
-      _state = creature_states.CONSUMING
-      print("consuming")
+      if GDUtil.reference_safe(_resource_target):
+        _state = creature_states.CONSUMING
+        print("consuming")
 
   var _move_amount = speed * delta
   match _state:
     creature_states.IDLE:
       _time_to_wander -= delta
     creature_states.CONSUMING:
-      global_position += global_position.direction_to(_resource_target.global_position) * _move_amount
+      if GDUtil.reference_safe(_resource_target):
+        global_position += global_position.direction_to(_resource_target.global_position) * _move_amount
 
-      if global_position.distance_to(_resource_target.global_position) <= consume_range:
-        _resource_target.consume(consume_amount)
-        _current_consume_meter = 0
+        if global_position.distance_to(_resource_target.global_position) <= consume_range:
+          _resource_target.consume(consume_amount)
+          _current_consume_meter = 0
+          _state = creature_states.IDLE
+      else:
         _state = creature_states.IDLE
     creature_states.WANDERING:
       if global_position.distance_to(_wander_target) <= _move_amount:
