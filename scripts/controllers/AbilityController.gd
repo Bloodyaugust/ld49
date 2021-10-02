@@ -4,12 +4,24 @@ const ability_resources:Array = [
   preload("res://abilities/Pond.tres"),
   preload("res://abilities/Grass.tres"),
 ]
+const ability_usable_color:Color = Color(1, 1, 1, 0.3)
+const ability_unusable_color:Color = Color(1, 0, 0, 0.3)
 
 onready var _icon:Sprite = find_node("AbilityIcon")
 onready var _resources_container = get_tree().get_root().find_node("Resources", true, false)
 
 var ability_cooldowns:Dictionary = {}
 var abilities_unlocked:Array = []
+
+func _ability_usable() -> bool:
+  var _resources:Array = get_tree().get_nodes_in_group("resources")
+  var _mouse_position = _icon.get_global_mouse_position()
+  
+  for _resource in _resources:
+    if _resource.global_position.distance_to(_mouse_position) <= _resource.exclusion_radius:
+      return false
+
+  return true
 
 func _on_store_state_changed(state_key: String, substate) -> void:
   match state_key:
@@ -39,6 +51,11 @@ func _process(delta):
   if _icon.visible:
     _icon.global_position = _icon.get_global_mouse_position()
 
+    if _ability_usable():
+      _icon.modulate = ability_usable_color
+    else:
+      _icon.modulate = ability_unusable_color
+
 func _ready():
   for _ability in ability_resources:
     ability_cooldowns[_ability.type] = 0
@@ -50,7 +67,7 @@ func _unhandled_input(event):
     if event.button_index == BUTTON_RIGHT:
       Store.set_state("active_ability", null)
 
-    if event.button_index == BUTTON_LEFT:
+    if event.button_index == BUTTON_LEFT && _ability_usable():
       var _instantiated_ability:Node2D = Store.state.active_ability.instantiates.instance()
 
       _instantiated_ability.global_position = _icon.get_global_mouse_position()

@@ -1,5 +1,8 @@
 extends Sprite
 
+const exclusion_radius_color:Color = Color(1, 0, 0, 0.1)
+
+export var exclusion_radius:float
 export var starting_amount:int
 export var type:String
 export var resource_name:String
@@ -12,6 +15,9 @@ func consume(amount) -> void:
 
   if _amount <= 0:
     queue_free()
+
+func _draw():
+  draw_circle(Vector2.ZERO, exclusion_radius, exclusion_radius_color)
 
 func _ready():
   if type == "water":
