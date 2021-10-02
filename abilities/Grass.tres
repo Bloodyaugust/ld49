@@ -1,17 +1,17 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://abilities/ability.gd" type="Script" id=1]
-[ext_resource path="res://actors/resources/Pond.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/pond.png" type="Texture" id=3]
+[ext_resource path="res://actors/resources/Grass.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )
-type = "pond"
+type = "grass"
 icon = ExtResource( 3 )
 cooldown = 5.0
 max_active = 5
 instantiates = ExtResource( 2 )
 requirements = [ {
-"amount": 0,
+"amount": 1,
 "type": "pond"
 } ]

@@ -6,3 +6,4 @@ export var icon:Texture
 export var cooldown:float
 export var max_active:int
 export var instantiates:PackedScene
+export var requirements:Array

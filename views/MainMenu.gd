@@ -3,9 +3,17 @@ extends Control
 onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
 onready var _play_button: Button = find_node("Play")
 
-func _on_play_button_pressed() -> void:
+func start_game() -> void:
+  Store.set_state("resources", {
+    "pond": 0,
+    "grass": 0,
+  })
+
   Store.set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)
   Store.set_state("game", GameConstants.GAME_STARTING)
+
+func _on_play_button_pressed() -> void:
+  start_game()
 
 func _on_state_changed(state_key: String, substate):
   match state_key:

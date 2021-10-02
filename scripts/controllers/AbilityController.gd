@@ -2,15 +2,29 @@ extends Node
 
 const ability_resources:Array = [
   preload("res://abilities/Pond.tres"),
+  preload("res://abilities/Grass.tres"),
 ]
 
 onready var _icon:Sprite = find_node("AbilityIcon")
 onready var _resources_container = get_tree().get_root().find_node("Resources", true, false)
 
 var ability_cooldowns:Dictionary = {}
+var abilities_unlocked:Array = []
 
 func _on_store_state_changed(state_key: String, substate) -> void:
   match state_key:
+    "resources":
+      abilities_unlocked = []
+      for _ability in ability_resources:
+        var _unlocked = true
+        for _requirement in _ability.requirements:
+          if substate[_requirement.type] < _requirement.amount:
+            _unlocked = false
+            break
+
+        if _unlocked:
+          abilities_unlocked.append(_ability)
+
     "active_ability":
       if substate:
         _icon.texture = substate.icon

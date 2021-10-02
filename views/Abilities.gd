@@ -11,6 +11,8 @@ func _on_ability_selected(ability) -> void:
 
 func _on_state_changed(state_key: String, substate):
   match state_key:
+    "resources":
+      call_deferred("_update_unlocked_abilities")
     "game":
       match substate:
         GameConstants.GAME_STARTING:
@@ -32,5 +34,13 @@ func _setup():
 
     _new_ability_item.ability = _ability_resource
     _new_ability_item.connect("ability_selected", self, "_on_ability_selected")
+    _new_ability_item.visible = false
 
     _abilities_container.add_child(_new_ability_item)
+
+func _update_unlocked_abilities() -> void:
+  for _ability_item in _abilities_container.get_children():
+    if _ability_item.ability in _ability_controller.abilities_unlocked:
+      _ability_item.visible = true
+    else:
+      _ability_item.visible = false

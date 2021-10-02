@@ -27,6 +27,7 @@ func _process(_delta):
 func _ready():
   _icon.texture = ability.icon
   _active_label.text = str(Store.state.resources[ability.type]) + "/" + str(ability.max_active)
+  _name_label.text = ability.type
 
   Store.connect("state_changed", self, "_on_state_changed")
 

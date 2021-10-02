@@ -8,6 +8,7 @@ var state: Dictionary = {
   "game": "",
   "resources": {
     "pond": 0,
+    "grass": 0,
   },
   "active_ability": null
  }
