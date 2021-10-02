@@ -41,6 +41,7 @@ func _on_store_state_changed(state_key: String, substate) -> void:
     "active_ability":
       if substate:
         _icon.texture = substate.icon
+        _icon.scale = substate.scale
         _icon.visible = true
       else:
         _icon.visible = false

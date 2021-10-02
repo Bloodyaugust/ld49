@@ -7,9 +7,10 @@
 [resource]
 script = ExtResource( 1 )
 type = "grass"
+scale = Vector2( 0.1, 0.1 )
 icon = ExtResource( 3 )
 cooldown = 1.0
-max_active = 5
+max_active = 4
 instantiates = ExtResource( 2 )
 requirements = [ {
 "amount": 1,
