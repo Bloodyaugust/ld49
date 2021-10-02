@@ -1,5 +1,7 @@
 extends Sprite
 
+const consume_range:float = 5.0
+
 enum creature_states {
   IDLE,
   CONSUMING,
@@ -24,6 +26,9 @@ var _state:int
 var _time_to_idle:float
 var _time_to_wander:float
 var _wander_target:Vector2
+
+func consume(_amount:int) -> void:
+  queue_free()
 
 func _draw():
   draw_line(Vector2.ZERO, to_local(spawner.global_position), Color.red)
@@ -67,6 +72,11 @@ func _process(delta):
       _time_to_wander -= delta
     creature_states.CONSUMING:
       global_position += global_position.direction_to(_resource_target.global_position) * _move_amount
+
+      if global_position.distance_to(_resource_target.global_position) <= consume_range:
+        _resource_target.consume(consume_amount)
+        _current_consume_meter = 0
+        _state = creature_states.IDLE
     creature_states.WANDERING:
       if global_position.distance_to(_wander_target) <= _move_amount:
         _wander_target = spawner.global_position + (Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * rand_range(0, spawner.spawn_move_range))
@@ -75,7 +85,7 @@ func _process(delta):
       _time_to_idle -= delta
 
 func _ready():
-  _current_consume_meter = consume_meter
+  _current_consume_meter = 0
   _state = creature_states.IDLE
   _wander_target = spawner.global_position
 
