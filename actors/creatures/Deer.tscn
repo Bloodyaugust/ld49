@@ -7,7 +7,6 @@
 "creatures",
 ]]
 scale = Vector2( 0.238216, 0.238859 )
-texture = ExtResource( 2 )
 script = ExtResource( 1 )
 consumes = "grass berries"
 consume_amount = 5
@@ -18,3 +17,7 @@ wander_time_max = 3.5
 wander_time_min = 1.75
 wander_interval_max = 0.75
 wander_interval_min = 0.25
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
