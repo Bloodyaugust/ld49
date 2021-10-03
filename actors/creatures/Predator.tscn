@@ -19,5 +19,5 @@ wander_interval_max = 0.75
 wander_interval_min = 0.25
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 5, 5 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )

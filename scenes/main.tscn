@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
+[ext_resource path="res://sprites/tree.png" type="Texture" id=2]
 [ext_resource path="res://resources/themes/kenney/kenney.tres" type="Theme" id=3]
 [ext_resource path="res://views/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://lib/BetterCam.tscn" type="PackedScene" id=5]
@@ -8,6 +9,15 @@
 [ext_resource path="res://views/Abilities.gd" type="Script" id=7]
 [ext_resource path="res://views/Stability.gd" type="Script" id=8]
 [ext_resource path="res://scripts/controllers/AbilityController.gd" type="Script" id=9]
+[ext_resource path="res://sprites/predator.png" type="Texture" id=10]
+[ext_resource path="res://icon.png" type="Texture" id=11]
+[ext_resource path="res://views/GameInfo.gd" type="Script" id=12]
+[ext_resource path="res://sprites/berries.png" type="Texture" id=13]
+[ext_resource path="res://sprites/pond.png" type="Texture" id=14]
+[ext_resource path="res://sprites/rodent.png" type="Texture" id=15]
+[ext_resource path="res://sprites/deer.png" type="Texture" id=16]
+[ext_resource path="res://sprites/fly.png" type="Texture" id=17]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -49,6 +59,19 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 2000, -0.25, 0, 0.25, 0, 474, -0.418121, 49.6505, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 974, -0.25, 0, 0.25, 0, 810, -0.418121, 49.6505, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
 }
 
@@ -183,6 +206,259 @@ custom_constants/separation = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Abilities"]
 anims/ui_show = SubResource( 3 )
+
+[node name="GameInfo" type="MarginContainer" parent="UIRoot"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -50.0
+margin_right = 164.0
+margin_bottom = 434.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource( 3 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/GameInfo"]
+anims/ui_show = SubResource( 4 )
+
+[node name="Root" type="HBoxContainer" parent="UIRoot/GameInfo"]
+margin_right = 214.0
+margin_bottom = 434.0
+custom_constants/separation = 0
+
+[node name="Expand" type="TextureRect" parent="UIRoot/GameInfo/Root"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="Panel" type="PanelContainer" parent="UIRoot/GameInfo/Root"]
+margin_left = 50.0
+margin_right = 214.0
+margin_bottom = 434.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UIRoot/GameInfo/Root/Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 157.0
+margin_bottom = 427.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 140.0
+margin_bottom = 410.0
+custom_constants/separation = 20
+
+[node name="CreaturesContainer" type="VBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer"]
+margin_right = 130.0
+margin_bottom = 190.0
+custom_constants/separation = 20
+
+[node name="rodent" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer"]
+margin_right = 130.0
+margin_bottom = 50.0
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/rodent"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/rodent"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 76.0
+margin_bottom = 37.0
+text = "<-"
+align = 1
+valign = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/rodent"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="deer" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer"]
+margin_top = 70.0
+margin_right = 130.0
+margin_bottom = 120.0
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/deer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/deer"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 76.0
+margin_bottom = 37.0
+text = "<-"
+align = 1
+valign = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/deer"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="predator" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer"]
+margin_top = 140.0
+margin_right = 130.0
+margin_bottom = 190.0
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/predator"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/predator"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 76.0
+margin_bottom = 37.0
+text = "<-"
+align = 1
+valign = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/predator"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="ResourcesContainer" type="VBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer"]
+margin_top = 210.0
+margin_right = 130.0
+margin_bottom = 400.0
+custom_constants/separation = 20
+
+[node name="grass" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer"]
+margin_right = 130.0
+margin_bottom = 50.0
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/grass"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/grass"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 76.0
+margin_bottom = 37.0
+text = "<-"
+align = 1
+valign = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/grass"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="berries" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer"]
+margin_top = 70.0
+margin_right = 130.0
+margin_bottom = 120.0
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/berries"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/berries"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 76.0
+margin_bottom = 37.0
+text = "<-"
+align = 1
+valign = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/berries"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="tree" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer"]
+margin_top = 140.0
+margin_right = 130.0
+margin_bottom = 190.0
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/tree"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/tree"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 76.0
+margin_bottom = 37.0
+text = "<-"
+align = 1
+valign = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/tree"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
 
 [node name="FPS" type="MarginContainer" parent="UIRoot"]
 margin_right = 40.0
