@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
 [ext_resource path="res://sprites/tree.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://sprites/fly.png" type="Texture" id=17]
 [ext_resource path="res://sprites/grass.png" type="Texture" id=18]
 [ext_resource path="res://sprites/background.png" type="Texture" id=19]
+[ext_resource path="res://sprites/Splash.png" type="Texture" id=20]
+[ext_resource path="res://views/Splash.gd" type="Script" id=21]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -74,6 +76,34 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 974, -0.25, 0, 0.25, 0, 814, -0.418121, 49.6505, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ui_show"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -491,6 +521,28 @@ margin_right = 82.0
 margin_bottom = 37.0
 text = "144 FPS"
 script = ExtResource( 1 )
+
+[node name="Splash" type="ColorRect" parent="UIRoot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot/Splash"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Splash"]
+anims/ui_show = SubResource( 5 )
 
 [node name="BetterCam" parent="." instance=ExtResource( 5 )]
 camera_target_speed = 300.0
