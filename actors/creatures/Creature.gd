@@ -52,8 +52,7 @@ func _find_resource_target() -> void:
       _eligible_resources.append(_resource)
 
   if _eligible_resources.size() > 0:
-    _eligible_resources.sort_custom(self, "_sort_resources")
-    _resource_target = _eligible_resources[0]
+    _resource_target = _eligible_resources[randi() % _eligible_resources.size()]
 
 func _process(delta):
   update()
@@ -82,7 +81,7 @@ func _process(delta):
     creature_states.IDLE:
       _time_to_wander -= delta
     creature_states.CONSUMING:
-      if GDUtil.reference_safe(_resource_target):
+      if GDUtil.reference_safe(_resource_target) && _resource_target.global_position.distance_to(spawner.global_position) <= spawner.spawn_move_range:
         global_position += global_position.direction_to(_resource_target.global_position) * _move_amount
 
         if global_position.distance_to(_resource_target.global_position) <= consume_range:
@@ -106,6 +105,3 @@ func _ready():
   var _new_creatures_state = Store.state.creatures.duplicate(true)
   _new_creatures_state[type] += 1
   Store.set_state("creatures", _new_creatures_state)
-
-func _sort_resources(a, b) -> bool:
-  return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
