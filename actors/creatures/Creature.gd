@@ -35,11 +35,12 @@ func consume(_amount:int) -> void:
   Store.set_state("creatures", _new_creatures_state)
 
 func _draw():
-  draw_line(Vector2.ZERO, to_local(spawner.global_position), Color.red)
-  if _state == creature_states.WANDERING:
-    draw_line(Vector2.ZERO, to_local(_wander_target), Color.green)
-  if GDUtil.reference_safe(_resource_target) && _state == creature_states.CONSUMING:
-    draw_line(Vector2.ZERO, to_local(_resource_target.global_position), Color.blue)
+  if Engine.is_editor_hint():
+    draw_line(Vector2.ZERO, to_local(spawner.global_position), Color.red)
+    if _state == creature_states.WANDERING:
+      draw_line(Vector2.ZERO, to_local(_wander_target), Color.green)
+    if GDUtil.reference_safe(_resource_target) && _state == creature_states.CONSUMING:
+      draw_line(Vector2.ZERO, to_local(_resource_target.global_position), Color.blue)
 
 func _find_resource_target() -> void:
   var _resources = get_tree().get_nodes_in_group("resources")

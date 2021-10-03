@@ -24,7 +24,13 @@ func consume(amount) -> void:
     queue_free()
 
 func _draw():
-  draw_circle(Vector2.ZERO, exclusion_radius / scale.x, exclusion_radius_color)
+  if Store.state.active_ability:
+    draw_circle(Vector2.ZERO, exclusion_radius / scale.x, exclusion_radius_color)
+
+func _on_store_state_changed(state_key:String, substate) -> void:
+  match state_key:
+    "active_ability":
+      update()
 
 func _ready():
   _amount = starting_amount
@@ -58,3 +64,5 @@ func _ready():
       _new_spawner.global_position = GDUtil.centroid(_resource_positions)
 
       _spawners_container.add_child(_new_spawner)
+
+  Store.connect("state_changed", self, "_on_store_state_changed")

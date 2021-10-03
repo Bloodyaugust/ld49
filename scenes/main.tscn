@@ -49,7 +49,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 2000, -0.25, 0, 0.25, 0, 434, -0.418121, 49.6505, 0.25, 0 ),
+"points": PoolRealArray( 2000, -0.25, 0, 0.25, 0, 474, -0.418121, 49.6505, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
 }
 
@@ -157,14 +157,10 @@ align = 1
 anims/ui_show = SubResource( 3 )
 
 [node name="Abilities" type="MarginContainer" parent="UIRoot"]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -65.0
 margin_top = -126.0
-margin_right = 65.0
-grow_horizontal = 2
+margin_right = 198.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -175,10 +171,9 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="UIRoot/Abilities"]
-margin_left = 58.0
-margin_right = 72.0
+margin_right = 14.0
 margin_bottom = 126.0
-size_flags_horizontal = 4
+size_flags_horizontal = 2
 
 [node name="AbilitiesContainer" type="HBoxContainer" parent="UIRoot/Abilities/PanelContainer"]
 margin_left = 7.0

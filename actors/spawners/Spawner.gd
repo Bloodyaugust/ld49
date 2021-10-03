@@ -12,7 +12,8 @@ var _time_to_spawn:float
 var _active_spawns:int
 
 func _draw():
-  draw_arc(Vector2.ZERO, spawn_move_range, 0, 2 * PI, 16, Color.red)
+  if Engine.is_editor_hint():
+    draw_arc(Vector2.ZERO, spawn_move_range, 0, 2 * PI, 16, Color.red)
 
 func _on_spawn_tree_exited() -> void:
   _active_spawns -= 1
