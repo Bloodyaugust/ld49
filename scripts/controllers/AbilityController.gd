@@ -15,9 +15,16 @@ var ability_cooldowns:Dictionary = {}
 var abilities_unlocked:Array = []
 
 func _ability_usable() -> bool:
+  var _active_ability:Resource = Store.state.active_ability
   var _resources:Array = get_tree().get_nodes_in_group("resources")
-  var _mouse_position = _icon.get_global_mouse_position()
+  var _mouse_position:Vector2 = _icon.get_global_mouse_position()
   
+  if Store.state.resources[_active_ability.type] >= _active_ability.max_active:
+    return false
+
+  if ability_cooldowns[_active_ability.type] >= 0:
+    return false
+
   for _resource in _resources:
     if _resource.global_position.distance_to(_mouse_position) <= _resource.exclusion_radius:
       return false
@@ -59,22 +66,33 @@ func _process(delta):
       _icon.modulate = ability_unusable_color
 
 func _ready():
+  _icon.visible = false
+
   for _ability in ability_resources:
     ability_cooldowns[_ability.type] = 0
 
   Store.connect("state_changed", self, "_on_store_state_changed")
 
 func _unhandled_input(event):
-  if Store.state.active_ability && event is InputEventMouseButton && event.pressed:
+  var _active_ability:Resource = Store.state.active_ability
+
+  if _active_ability && event is InputEventMouseButton && event.pressed:
     if event.button_index == BUTTON_RIGHT:
       Store.set_state("active_ability", null)
 
     if event.button_index == BUTTON_LEFT && _ability_usable():
-      var _instantiated_ability:Node2D = Store.state.active_ability.instantiates.instance()
+      var _instantiated_ability:Node2D = _active_ability.instantiates.instance()
 
       _instantiated_ability.global_position = _icon.get_global_mouse_position()
 
       _resources_container.add_child(_instantiated_ability)
 
-      ability_cooldowns[Store.state.active_ability.type] = Store.state.active_ability.cooldown
-      Store.set_state("active_ability", null)
+      ability_cooldowns[_active_ability.type] = _active_ability.cooldown
+
+      if Store.state.resources[_active_ability.type] >= _active_ability.max_active:
+        Store.set_state("active_ability", null)
+
+  if event is InputEventKey && event.pressed:
+    match event.scancode:
+      49, 50, 51:
+        Store.set_state("active_ability", ability_resources[event.scancode - 49])
