@@ -1,13 +1,29 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
 [ext_resource path="res://scripts/controllers/AbilityController.gd" type="Script" id=2]
 [ext_resource path="res://resources/themes/kenney/kenney.tres" type="Theme" id=3]
 [ext_resource path="res://views/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://lib/BetterCam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/controllers/StabilityController.gd" type="Script" id=6]
 [ext_resource path="res://views/Abilities.gd" type="Script" id=7]
+[ext_resource path="res://views/Stability.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
+resource_name = "ui_show"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -1200, -0.25, 0, 0.25, 0, 0, -0.418121, 49.6505, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=3]
 resource_name = "ui_show"
 length = 0.5
 tracks/0/type = "bezier"
@@ -94,6 +110,47 @@ text = "Play"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/MainMenu"]
 anims/ui_show = SubResource( 1 )
 
+[node name="Stability" type="MarginContainer" parent="UIRoot"]
+anchor_right = 1.0
+margin_bottom = 104.0
+theme = ExtResource( 3 )
+custom_constants/margin_top = 40
+custom_constants/margin_bottom = 40
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/Stability"]
+margin_top = 40.0
+margin_right = 1024.0
+margin_bottom = 120.0
+
+[node name="StabilityLabel" type="Label" parent="UIRoot/Stability/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 24.0
+text = "Stability: 69%"
+align = 1
+
+[node name="LoseWarning" type="Label" parent="UIRoot/Stability/VBoxContainer"]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
+text = "(Lose in 420 seconds!)"
+align = 1
+
+[node name="WinWarning" type="Label" parent="UIRoot/Stability/VBoxContainer"]
+margin_top = 56.0
+margin_right = 1024.0
+margin_bottom = 80.0
+custom_colors/font_color = Color( 0.305882, 0.913725, 0.160784, 1 )
+text = "(Win in 420 seconds!)"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Stability"]
+anims/ui_show = SubResource( 3 )
+
 [node name="Abilities" type="MarginContainer" parent="UIRoot"]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -164,3 +221,6 @@ script = ExtResource( 2 )
 [node name="AbilityIcon" type="Sprite" parent="AbilityController"]
 modulate = Color( 1, 1, 1, 0.376471 )
 z_index = 100
+
+[node name="StabilityController" type="Node" parent="."]
+script = ExtResource( 6 )

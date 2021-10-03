@@ -6,6 +6,11 @@ var persistent_store:PersistentStore
 var state: Dictionary = {
   "client_view": "",
   "game": "",
+  "creatures": {
+    "insect": 0,
+    "deer": 0,
+    "rodent": 0,
+  },
   "resources": {
     "pond": 0,
     "grass": 0,

@@ -30,6 +30,10 @@ var _wander_target:Vector2
 func consume(_amount:int) -> void:
   queue_free()
 
+  var _new_creatures_state = Store.state.creatures.duplicate(true)
+  _new_creatures_state[type] -= 1
+  Store.set_state("creatures", _new_creatures_state)
+
 func _draw():
   draw_line(Vector2.ZERO, to_local(spawner.global_position), Color.red)
   if _state == creature_states.WANDERING:
@@ -98,6 +102,10 @@ func _ready():
   _current_consume_meter = 0
   _state = creature_states.IDLE
   _wander_target = spawner.global_position
+
+  var _new_creatures_state = Store.state.creatures.duplicate(true)
+  _new_creatures_state[type] += 1
+  Store.set_state("creatures", _new_creatures_state)
 
 func _sort_resources(a, b) -> bool:
   return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)

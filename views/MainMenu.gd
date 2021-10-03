@@ -3,7 +3,32 @@ extends Control
 onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
 onready var _play_button: Button = find_node("Play")
 
+func end_game() -> void:
+  Store.set_state("creatures", {
+    "insect": 0,
+    "rodent": 0,
+    "deer": 0,
+  })
+  Store.set_state("resources", {
+    "pond": 0,
+    "grass": 0,
+    "berries": 0,
+  })
+  Store.set_state("spawners", {
+    "insect": 0,
+    "rodent": 0,
+    "deer": 0,
+  })
+
+  Store.set_state("client_view", ClientConstants.CLIENT_VIEW_MAIN_MENU)
+  Store.set_state("game", GameConstants.GAME_OVER)
+
 func start_game() -> void:
+  Store.set_state("creatures", {
+    "insect": 0,
+    "rodent": 0,
+    "deer": 0,
+  })
   Store.set_state("resources", {
     "pond": 0,
     "grass": 0,
