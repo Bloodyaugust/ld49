@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/spawners/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://actors/creatures/Predator.tscn" type="PackedScene" id=2]
+
+[node name="Predator" type="Sprite" groups=[
+"spawners",
+]]
+z_index = -1
+region_rect = Rect2( 2.328, 2.386, 2.883, 2.039 )
+script = ExtResource( 1 )
+type = "predator"
+spawn_move_range = 500.0
+spawn_rate = 1.0
+spawn_scene = ExtResource( 2 )
+max_spawns = 1

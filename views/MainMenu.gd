@@ -8,16 +8,19 @@ func end_game() -> void:
     "insect": 0,
     "rodent": 0,
     "deer": 0,
+    "predator": 0,
   })
   Store.set_state("resources", {
     "pond": 0,
     "grass": 0,
     "berries": 0,
+    "tree": 0,
   })
   Store.set_state("spawners", {
     "insect": 0,
     "rodent": 0,
     "deer": 0,
+    "predator": 0,
   })
 
   Store.set_state("active_ability", null)
@@ -29,16 +32,19 @@ func start_game() -> void:
     "insect": 0,
     "rodent": 0,
     "deer": 0,
+    "predator": 0,
   })
   Store.set_state("resources", {
     "pond": 0,
     "grass": 0,
     "berries": 0,
+    "tree": 0,
   })
   Store.set_state("spawners", {
     "insect": 0,
     "rodent": 0,
     "deer": 0,
+    "predator": 0,
   })
 
   Store.set_state("active_ability", null)

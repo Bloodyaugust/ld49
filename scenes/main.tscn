@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "ui_show"
 length = 0.5
 tracks/0/type = "value"
@@ -39,8 +39,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "ui_show"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rect_position:y")
@@ -154,7 +153,7 @@ text = "(Win in 420 seconds!)"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Stability"]
-anims/ui_show = SubResource( 3 )
+anims/ui_show = SubResource( 2 )
 
 [node name="Abilities" type="MarginContainer" parent="UIRoot"]
 anchor_top = 1.0
@@ -183,7 +182,7 @@ margin_bottom = 119.0
 custom_constants/separation = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Abilities"]
-anims/ui_show = SubResource( 2 )
+anims/ui_show = SubResource( 3 )
 
 [node name="FPS" type="MarginContainer" parent="UIRoot"]
 margin_right = 40.0

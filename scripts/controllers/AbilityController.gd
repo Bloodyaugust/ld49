@@ -4,6 +4,7 @@ const ability_resources:Array = [
   preload("res://abilities/Pond.tres"),
   preload("res://abilities/Grass.tres"),
   preload("res://abilities/Berries.tres"),
+  preload("res://abilities/Tree.tres"),
 ]
 const ability_usable_color:Color = Color(1, 1, 1, 0.3)
 const ability_unusable_color:Color = Color(1, 0, 0, 0.3)
@@ -94,5 +95,5 @@ func _unhandled_input(event):
 
   if event is InputEventKey && event.pressed:
     match event.scancode:
-      49, 50, 51:
+      49, 50, 51, 52:
         Store.set_state("active_ability", ability_resources[event.scancode - 49])

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/creatures/Creature.gd" type="Script" id=1]
+[ext_resource path="res://sprites/predator.png" type="Texture" id=2]
+
+[node name="Predator" type="Sprite" groups=[
+"creatures",
+]]
+scale = Vector2( 0.238216, 0.238859 )
+script = ExtResource( 1 )
+consumes = "deer rodent"
+consume_amount = 15
+consume_meter = 5.0
+speed = 80.0
+type = "predator"
+wander_time_max = 3.5
+wander_time_min = 1.75
+wander_interval_max = 0.75
+wander_interval_min = 0.25
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )

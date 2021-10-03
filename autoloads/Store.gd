@@ -10,16 +10,19 @@ var state: Dictionary = {
     "insect": 0,
     "deer": 0,
     "rodent": 0,
+    "predator": 0,
   },
   "resources": {
     "pond": 0,
     "grass": 0,
     "berries": 0,
+    "tree": 0,
   },
   "spawners": {
     "insect": 0,
     "rodent": 0,
     "deer": 0,
+    "predator": 0,
   },
   "active_ability": null
  }

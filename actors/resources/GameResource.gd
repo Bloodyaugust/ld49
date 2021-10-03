@@ -4,6 +4,7 @@ const exclusion_radius_color:Color = Color(1, 0, 0, 0.1)
 const game_resource_data:Dictionary = {
   "grass": preload("res://actors/resources/GrassData.tres"),
   "berries": preload("res://actors/resources/BerriesData.tres"),
+  "tree": preload("res://actors/resources/TreeData.tres"),
 }
 
 export var exclusion_radius:float
