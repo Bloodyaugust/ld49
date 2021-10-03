@@ -120,6 +120,18 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 2 )
 flip_h = true
 
+[node name="Indicator" type="TextureRect" parent="Sprite"]
+margin_left = -187.025
+margin_top = -274.406
+margin_right = -37.0254
+margin_bottom = -124.406
+rect_min_size = Vector2( 150, 150 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Mouth" type="Node2D" parent="Sprite"]
 position = Vector2( -88.9268, 88.7174 )
 scale = Vector2( 1.33333, 1.33333 )

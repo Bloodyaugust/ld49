@@ -74,6 +74,18 @@ wander_interval_min = 1.5
 scale = Vector2( 0.075, 0.075 )
 texture = ExtResource( 2 )
 
+[node name="Indicator" type="TextureRect" parent="Sprite"]
+margin_left = -3346.66
+margin_top = -6409.48
+margin_right = -3196.66
+margin_bottom = -6259.48
+rect_min_size = Vector2( 150, 150 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Mouth" type="Node2D" parent="Sprite"]
 position = Vector2( -121.359, 223.915 )
 scale = Vector2( 13.3333, 13.3333 )

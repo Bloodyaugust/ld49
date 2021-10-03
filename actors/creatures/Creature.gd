@@ -1,6 +1,10 @@
 extends Sprite
 
 const consume_range:float = 5.0
+const state_indicator_textures:Dictionary = {
+  "thirsty": preload("res://sprites/THIRSTY.png"),
+  "hunting": preload("res://sprites/hunting.png"),
+}
 
 enum creature_states {
   IDLE,
@@ -24,6 +28,7 @@ var spawner:Node2D
 
 onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
 onready var _mouth:Node2D = find_node("Mouth")
+onready var _state_indicator:TextureRect = find_node("Indicator")
 
 var _current_consume_meter:float
 var _resource_target:Node2D
@@ -68,6 +73,15 @@ func _on_consume_complete() -> void:
   _state = creature_states.IDLE
 
 func _process(delta):
+  match _state:
+    creature_states.HUNTING:
+      _state_indicator.texture = state_indicator_textures.hunting
+    _:
+      _state_indicator.texture = null
+
+  if dead:
+    _state_indicator.texture = null
+
   if !dead && _state != creature_states.CONSUMING:
     update()
     _current_consume_meter += delta
