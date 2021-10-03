@@ -10,6 +10,8 @@ export var exclusion_radius:float
 export var starting_amount:int
 export var type:String
 
+var claimed:bool = false
+
 onready var _spawners_container:Node = get_tree().get_root().find_node("Spawners", true, false)
 
 var _amount:int
@@ -38,19 +40,20 @@ func _ready():
 
     _spawners_container.add_child(_new_bug_spawner)
   else:
-    var _num_resources_requirement_type = Store.state.resources[game_resource_data[type].spawner_requirements.type]
-    var _num_wanted_spawners = _num_resources_requirement_type / game_resource_data[type].spawner_requirements.amount
+    var _resources:Array = get_tree().get_nodes_in_group("resources")
+    var _unclaimed_matching_resources:Array = []
 
-    print("num wanted spawners: " + str(_num_wanted_spawners))
-    print("num spawners: " + str(Store.state.spawners[game_resource_data[type].spawner_requirements.spawner_type]))
-    if _num_wanted_spawners > Store.state.spawners[game_resource_data[type].spawner_requirements.spawner_type]:
+    for _resource in _resources:
+      if !_resource.claimed && _resource.type == game_resource_data[type].spawner_requirements.type:
+        _unclaimed_matching_resources.append(_resource)
+
+    if _unclaimed_matching_resources.size() >= game_resource_data[type].spawner_requirements.amount:
       var _new_spawner:Node2D = game_resource_data[type].spawner_scene.instance()
-      var _resources:Array = get_tree().get_nodes_in_group("resources")
       var _resource_positions:Array = []
 
-      for _resource in _resources:
-        if _resource.type == game_resource_data[type].spawner_requirements.type:
-          _resource_positions.append(_resource.global_position)
+      for _resource in _unclaimed_matching_resources:
+        _resource_positions.append(_resource.global_position)
+        _resource.claimed = true
 
       _new_spawner.global_position = GDUtil.centroid(_resource_positions)
 
