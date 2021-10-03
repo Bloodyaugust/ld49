@@ -64,6 +64,7 @@ scale = Vector2( 0.194641, 0.253806 )
 script = ExtResource( 1 )
 consume_meter = 1e+09
 speed = 115.0
+thirst_meter = 1e+10
 type = "insect"
 wander_time_max = 3.5
 wander_time_min = 1.75
