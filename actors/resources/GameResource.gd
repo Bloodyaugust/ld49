@@ -22,7 +22,7 @@ func consume(amount) -> void:
     queue_free()
 
 func _draw():
-  draw_circle(Vector2.ZERO, exclusion_radius, exclusion_radius_color)
+  draw_circle(Vector2.ZERO, exclusion_radius / scale.x, exclusion_radius_color)
 
 func _ready():
   _amount = starting_amount

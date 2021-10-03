@@ -8,7 +8,7 @@ script = ExtResource( 1 )
 type = "grass"
 spawner_scene = ExtResource( 2 )
 spawner_requirements = {
-"amount": 2,
+"amount": 8,
 "spawner_type": "rodent",
 "type": "grass"
 }

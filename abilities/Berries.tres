@@ -7,10 +7,10 @@
 [resource]
 script = ExtResource( 1 )
 type = "berries"
-scale = Vector2( 0.33, 0.33 )
+scale = Vector2( 0.15, 0.15 )
 icon = ExtResource( 2 )
 cooldown = 1.0
-max_active = 6
+max_active = 24
 instantiates = ExtResource( 3 )
 requirements = [ {
 "amount": 3,

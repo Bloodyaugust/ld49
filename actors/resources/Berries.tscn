@@ -6,10 +6,10 @@
 [node name="Berries" type="Sprite" groups=[
 "resources",
 ]]
-scale = Vector2( 0.33, 0.33 )
+scale = Vector2( 0.15, 0.15 )
 z_index = -2
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
-exclusion_radius = 50.0
+exclusion_radius = 60.0
 starting_amount = 100
 type = "berries"

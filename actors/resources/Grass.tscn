@@ -10,6 +10,6 @@ scale = Vector2( 0.1, 0.1 )
 z_index = -2
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
-exclusion_radius = 50.0
+exclusion_radius = 60.0
 starting_amount = 100
 type = "grass"

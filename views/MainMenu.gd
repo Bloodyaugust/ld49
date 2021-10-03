@@ -20,6 +20,7 @@ func end_game() -> void:
     "deer": 0,
   })
 
+  Store.set_state("active_ability", null)
   Store.set_state("client_view", ClientConstants.CLIENT_VIEW_MAIN_MENU)
   Store.set_state("game", GameConstants.GAME_OVER)
 
@@ -40,6 +41,7 @@ func start_game() -> void:
     "deer": 0,
   })
 
+  Store.set_state("active_ability", null)
   Store.set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)
   Store.set_state("game", GameConstants.GAME_STARTING)
 

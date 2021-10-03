@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
-[ext_resource path="res://scripts/controllers/AbilityController.gd" type="Script" id=2]
 [ext_resource path="res://resources/themes/kenney/kenney.tres" type="Theme" id=3]
 [ext_resource path="res://views/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://lib/BetterCam.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/controllers/StabilityController.gd" type="Script" id=6]
 [ext_resource path="res://views/Abilities.gd" type="Script" id=7]
 [ext_resource path="res://views/Stability.gd" type="Script" id=8]
+[ext_resource path="res://scripts/controllers/AbilityController.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -113,6 +113,7 @@ text = "Play"
 anims/ui_show = SubResource( 1 )
 
 [node name="Stability" type="MarginContainer" parent="UIRoot"]
+visible = false
 anchor_right = 1.0
 margin_bottom = 104.0
 mouse_filter = 2
@@ -156,11 +157,16 @@ align = 1
 anims/ui_show = SubResource( 3 )
 
 [node name="Abilities" type="MarginContainer" parent="UIRoot"]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = -92.0
+margin_left = -65.0
+margin_top = -126.0
+margin_right = 65.0
+grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource( 3 )
 script = ExtResource( 7 )
@@ -169,26 +175,17 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="UIRoot/Abilities"]
-margin_right = 1024.0
-margin_bottom = 92.0
+margin_left = 58.0
+margin_right = 72.0
+margin_bottom = 126.0
+size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="UIRoot/Abilities/PanelContainer"]
+[node name="AbilitiesContainer" type="HBoxContainer" parent="UIRoot/Abilities/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 85.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
-
-[node name="AbilitiesContainer" type="HBoxContainer" parent="UIRoot/Abilities/PanelContainer/MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 990.0
-margin_bottom = 58.0
+margin_right = 7.0
+margin_bottom = 119.0
 custom_constants/separation = 20
-alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Abilities"]
 anims/ui_show = SubResource( 2 )
@@ -212,6 +209,8 @@ text = "144 FPS"
 script = ExtResource( 1 )
 
 [node name="BetterCam" parent="." instance=ExtResource( 5 )]
+zoom_follow_scalar = 0.05
+zoom_max = 2.0
 
 [node name="Spawners" type="Node" parent="."]
 
@@ -220,7 +219,7 @@ script = ExtResource( 1 )
 [node name="Resources" type="Node" parent="."]
 
 [node name="AbilityController" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 9 )
 
 [node name="AbilityIcon" type="Sprite" parent="AbilityController"]
 modulate = Color( 1, 1, 1, 0.376471 )

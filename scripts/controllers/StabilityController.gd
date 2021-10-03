@@ -1,6 +1,7 @@
 extends Node
 
-const end_timer:float = 10.0
+const end_timer:float = 60.0
+const unstable_below_stability:float = 0.75
 
 signal stability_changed(stability, unstable, winning)
 
@@ -34,8 +35,7 @@ func _calculate_stability() -> void:
 
   if _max_creatures > 0:
     _current_stability = float(_num_creatures) / float(_max_creatures)
-  _unstable = _current_stability <= 0.25
-
+  _unstable = _current_stability <= unstable_below_stability
   _winning = !_unstable
   for _creature_key in Store.state.creatures.keys():
     if Store.state.creatures[_creature_key] == 0:
