@@ -140,7 +140,6 @@ func _process(delta):
         global_position += global_position.direction_to(_pond.global_position) * _move_amount
 
         if global_position.distance_to(_pond.global_position) <= drink_range:
-          print("Drinking at distance: " + str(global_position.distance_to(_pond.global_position)))
           _animation_player.play("consume")
           _state = creature_states.DRINKING
         

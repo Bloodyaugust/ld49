@@ -6,9 +6,6 @@ onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
 
 var _ability_item_scene:PackedScene = preload("res://views/components/AbilityItem.tscn")
 
-func _on_ability_selected(ability) -> void:
-  print(ability.type)
-
 func _on_state_changed(state_key: String, substate):
   match state_key:
     "resources":
@@ -33,7 +30,6 @@ func _setup():
     var _new_ability_item = _ability_item_scene.instance()
 
     _new_ability_item.ability = _ability_resource
-    _new_ability_item.connect("ability_selected", self, "_on_ability_selected")
     _new_ability_item.visible = false
 
     _abilities_container.add_child(_new_ability_item)

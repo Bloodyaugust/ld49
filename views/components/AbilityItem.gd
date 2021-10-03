@@ -1,7 +1,5 @@
 extends Control
 
-signal ability_selected(ability)
-
 var ability:Resource
 
 onready var _ability_controller = get_tree().get_root().find_node("AbilityController", true, false)
@@ -12,7 +10,6 @@ onready var _progress_bar:ProgressBar = find_node("ProgressBar")
 
 func _gui_input(event:InputEvent):
   if _usable() && event is InputEventMouseButton && event.button_index == BUTTON_LEFT && event.pressed:
-    emit_signal("ability_selected", ability)
     Store.set_state("active_ability", ability)
 
 func _on_state_changed(state_key: String, substate):

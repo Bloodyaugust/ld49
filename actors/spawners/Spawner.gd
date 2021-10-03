@@ -25,7 +25,6 @@ func _ready():
   var _new_spawners_state = Store.state.spawners.duplicate(true)
   _new_spawners_state[type] += 1
   Store.set_state("spawners", _new_spawners_state)
-  print("adding spawner: " + type + " with range: " + str(spawn_move_range))
 
 func _process(delta):
   if _active_spawns < max_spawns:
@@ -42,4 +41,3 @@ func _process(delta):
 
     _time_to_spawn = spawn_rate
     _active_spawns += 1
-    print("spawning")
