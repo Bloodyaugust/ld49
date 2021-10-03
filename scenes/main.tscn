@@ -72,7 +72,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 974, -0.25, 0, 0.25, 0, 810, -0.418121, 49.6505, 0.25, 0 ),
+"points": PoolRealArray( 974, -0.25, 0, 0.25, 0, 814, -0.418121, 49.6505, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
 }
 
@@ -214,6 +214,7 @@ anchor_right = 1.0
 margin_left = -50.0
 margin_right = 164.0
 margin_bottom = 434.0
+mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource( 3 )
@@ -228,7 +229,8 @@ anims/ui_show = SubResource( 4 )
 [node name="Root" type="HBoxContainer" parent="UIRoot/GameInfo"]
 margin_right = 214.0
 margin_bottom = 434.0
-custom_constants/separation = 0
+mouse_filter = 2
+custom_constants/separation = -2
 
 [node name="Expand" type="TextureRect" parent="UIRoot/GameInfo/Root"]
 margin_right = 50.0
@@ -242,15 +244,17 @@ expand = true
 stretch_mode = 6
 
 [node name="Panel" type="PanelContainer" parent="UIRoot/GameInfo/Root"]
-margin_left = 50.0
-margin_right = 214.0
+margin_left = 48.0
+margin_right = 212.0
 margin_bottom = 434.0
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UIRoot/GameInfo/Root/Panel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 157.0
 margin_bottom = 427.0
+mouse_filter = 2
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -264,16 +268,19 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 140.0
 margin_bottom = 410.0
+mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="CreaturesContainer" type="VBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer"]
 margin_right = 130.0
 margin_bottom = 190.0
+mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="rodent" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer"]
 margin_right = 130.0
 margin_bottom = 50.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/rodent"]
 margin_right = 50.0
@@ -305,6 +312,7 @@ stretch_mode = 6
 margin_top = 70.0
 margin_right = 130.0
 margin_bottom = 120.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/deer"]
 margin_right = 50.0
@@ -336,6 +344,7 @@ stretch_mode = 6
 margin_top = 140.0
 margin_right = 130.0
 margin_bottom = 190.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/CreaturesContainer/predator"]
 margin_right = 50.0
@@ -367,11 +376,13 @@ stretch_mode = 6
 margin_top = 210.0
 margin_right = 130.0
 margin_bottom = 400.0
+mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="grass" type="HBoxContainer" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer"]
 margin_right = 130.0
 margin_bottom = 50.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/grass"]
 margin_right = 50.0
@@ -403,6 +414,7 @@ stretch_mode = 6
 margin_top = 70.0
 margin_right = 130.0
 margin_bottom = 120.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/berries"]
 margin_right = 50.0
@@ -434,6 +446,7 @@ stretch_mode = 6
 margin_top = 140.0
 margin_right = 130.0
 margin_bottom = 190.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot/GameInfo/Root/Panel/MarginContainer/VBoxContainer/ResourcesContainer/tree"]
 margin_right = 50.0

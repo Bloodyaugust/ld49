@@ -12,6 +12,7 @@ export var starting_amount:int
 export var type:String
 
 var claimed:bool = false
+var dead:bool = false
 
 onready var _spawners_container:Node = get_tree().get_root().find_node("Spawners", true, false)
 
