@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
 [ext_resource path="res://sprites/tree.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://sprites/deer.png" type="Texture" id=16]
 [ext_resource path="res://sprites/fly.png" type="Texture" id=17]
 [ext_resource path="res://sprites/grass.png" type="Texture" id=18]
+[ext_resource path="res://sprites/background.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -498,3 +499,8 @@ z_index = 100
 
 [node name="StabilityController" type="Node" parent="."]
 script = ExtResource( 6 )
+
+[node name="background" type="Sprite" parent="."]
+scale = Vector2( 1.2, 1.2 )
+z_index = -5
+texture = ExtResource( 19 )
