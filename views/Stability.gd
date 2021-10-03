@@ -1,5 +1,6 @@
 extends Control
 
+onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
 onready var _stability_controller:Node = get_tree().get_root().find_node("StabilityController", true, false)
 onready var _stability_label:Label = find_node("StabilityLabel")
 onready var _lose_warning:Label = find_node("LoseWarning")
@@ -27,6 +28,19 @@ func _on_stability_changed(stability, unstable, winning):
   else:
     _win_warning.visible = false
 
+func _on_store_state_changed(state_key:String, substate) -> void:
+  match state_key:
+    "game":
+      match substate:
+        GameConstants.GAME_OVER:
+          _animation_player.play_backwards("ui_show")
+          yield(_animation_player, "animation_finished")
+          visible = false
+    "spawners":
+      if substate.rodent > 0 && !visible:
+        visible = true
+        _animation_player.play("ui_show")
+
 func _process(delta):
   if _unstable:
     _lose_warning.text = "(lose in " + str(int(_stability_controller.current_stability_timer)) + " seconds!)"
@@ -39,3 +53,4 @@ func _ready():
   _lose_warning.visible = false
 
   _stability_controller.connect("stability_changed", self, "_on_stability_changed")
+  Store.connect("state_changed", self, "_on_store_state_changed")
