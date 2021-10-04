@@ -38,36 +38,35 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "ui_show"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:rect_position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( -1200, -0.25, 0, 0.25, 0, 0, -0.418121, 49.6505, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "ui_show"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:rect_position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( -1200, -0.25, 0, 0.25, 0, 0, -0.418121, 49.6505, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-
 [sub_resource type="Animation" id=2]
 resource_name = "ui_show"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -1200, -0.25, 0, 0.25, 0, 0, -0.418121, 49.6505, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ui_show"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -1200, -0.25, 0, 0.25, 0, 0, -0.418121, 49.6505, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -82,7 +81,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rect_position:y")
@@ -95,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rect_position:x")
@@ -108,8 +107,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "ui_show"
+[sub_resource type="Animation" id=7]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect:modulate")
@@ -273,7 +271,7 @@ margin_bottom = 333.736
 text = "Main Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Credits"]
-anims/ui_show = SubResource( 7 )
+anims/ui_show = SubResource( 2 )
 
 [node name="GameOver" type="MarginContainer" parent="UIRoot"]
 visible = false
@@ -329,7 +327,7 @@ margin_bottom = 289.736
 text = "Main Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/GameOver"]
-anims/ui_show = SubResource( 6 )
+anims/ui_show = SubResource( 3 )
 
 [node name="Stability" type="MarginContainer" parent="UIRoot"]
 visible = false
@@ -385,7 +383,7 @@ text = "(Win in 420 seconds!)"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Stability"]
-anims/ui_show = SubResource( 2 )
+anims/ui_show = SubResource( 4 )
 
 [node name="Abilities" type="MarginContainer" parent="UIRoot"]
 anchor_top = 1.0
@@ -414,7 +412,7 @@ margin_bottom = 119.0
 custom_constants/separation = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Abilities"]
-anims/ui_show = SubResource( 3 )
+anims/ui_show = SubResource( 5 )
 
 [node name="GameInfo" type="MarginContainer" parent="UIRoot"]
 anchor_left = 1.0
@@ -432,7 +430,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/GameInfo"]
-anims/ui_show = SubResource( 4 )
+anims/ui_show = SubResource( 6 )
 
 [node name="Root" type="HBoxContainer" parent="UIRoot/GameInfo"]
 margin_right = 214.0
@@ -722,7 +720,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIRoot/Splash"]
-anims/ui_show = SubResource( 5 )
+anims/ui_show = SubResource( 7 )
 
 [node name="BetterCam" parent="." instance=ExtResource( 5 )]
 camera_target_speed = 300.0
