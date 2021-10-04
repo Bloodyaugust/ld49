@@ -47,6 +47,7 @@ func _end_game() -> void:
   GDUtil.free_children(_creatures_container)
   GDUtil.free_children(_resources_container)
   GDUtil.free_children(_spawners_container)
+  Store.set_state("won", _winning)
   _main_menu.end_game()
 
 func _on_store_state_changed(state_key: String, substate) -> void:

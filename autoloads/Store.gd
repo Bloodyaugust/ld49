@@ -24,7 +24,8 @@ var state: Dictionary = {
     "deer": 0,
     "predator": 0,
   },
-  "active_ability": null
+  "active_ability": null,
+  "won": false,
  }
 
 func save_persistent_store() -> void:

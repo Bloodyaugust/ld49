@@ -24,7 +24,7 @@ func end_game() -> void:
   })
 
   Store.set_state("active_ability", null)
-  Store.set_state("client_view", ClientConstants.CLIENT_VIEW_MAIN_MENU)
+  Store.set_state("client_view", ClientConstants.CLIENT_VIEW_GAME_OVER)
   Store.set_state("game", GameConstants.GAME_OVER)
 
 func start_game() -> void:
