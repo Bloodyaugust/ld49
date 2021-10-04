@@ -13,4 +13,4 @@ type = "deer"
 spawn_move_range = 250.0
 spawn_rate = 20.0
 spawn_scene = ExtResource( 2 )
-max_spawns = 1
+max_spawns = 2

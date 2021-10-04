@@ -10,7 +10,7 @@ type = "grass"
 scale = Vector2( 0.1, 0.1 )
 icon = ExtResource( 3 )
 cooldown = 1.0
-max_active = 32
+max_active = 64
 instantiates = ExtResource( 2 )
 requirements = [ {
 "amount": 1,

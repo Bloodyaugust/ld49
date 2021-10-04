@@ -16,4 +16,4 @@ type = "rodent"
 spawn_move_range = 200.0
 spawn_rate = 15.0
 spawn_scene = ExtResource( 2 )
-max_spawns = 1
+max_spawns = 2
