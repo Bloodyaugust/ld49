@@ -1,6 +1,7 @@
 extends Control
 
 onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
+onready var _credits_button: Button = find_node("Credits")
 onready var _play_button: Button = find_node("Play")
 
 func end_game() -> void:
@@ -51,6 +52,9 @@ func start_game() -> void:
   Store.set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)
   Store.set_state("game", GameConstants.GAME_STARTING)
 
+func _on_credits_button_pressed() -> void:
+  Store.set_state("client_view", ClientConstants.CLIENT_VIEW_CREDITS)
+
 func _on_play_button_pressed() -> void:
   start_game()
 
@@ -67,6 +71,7 @@ func _on_state_changed(state_key: String, substate):
           visible = false
 
 func _ready():
+  _credits_button.connect("pressed", self, "_on_credits_button_pressed")
   _play_button.connect("pressed", self, "_on_play_button_pressed")
 
   Store.connect("state_changed", self, "_on_state_changed")
