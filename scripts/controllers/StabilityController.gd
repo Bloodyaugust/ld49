@@ -1,7 +1,7 @@
 extends Node
 
-const end_timer:float = 60.0
-const unstable_below_stability:float = 0.75
+const end_timer:float = 30.0
+const unstable_below_stability:float = 0.5
 
 signal stability_changed(stability, unstable, winning)
 

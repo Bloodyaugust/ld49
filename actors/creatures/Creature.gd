@@ -44,6 +44,10 @@ var _thirst:float
 var _wander_target:Vector2
 
 func consume(_amount:int) -> void:
+  _die()
+
+func _die() -> void:
+  dead = true
   _animation_player.play("die")
   yield(_animation_player, "animation_finished")
   queue_free()
@@ -99,6 +103,10 @@ func _process(delta):
     update()
     _current_consume_meter += delta
     _thirst -= delta
+
+    if _current_consume_meter >= consume_meter * 4:
+      _die()
+      return
 
     if _time_to_idle <= 0 && _state == creature_states.WANDERING:
       _animation_player.play("idle")
