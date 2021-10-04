@@ -516,6 +516,7 @@ expand = true
 stretch_mode = 6
 
 [node name="FPS" type="MarginContainer" parent="UIRoot"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 3 )
