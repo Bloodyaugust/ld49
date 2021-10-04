@@ -107,13 +107,14 @@ scale = Vector2( 0.238216, 0.238859 )
 script = ExtResource( 1 )
 consumes = "grass berries"
 consume_amount = 5
-consume_meter = 2.0
-speed = 60.0
+consume_meter = 10.0
+speed = 90.0
+thirst_meter = 20.0
 type = "deer"
-wander_time_max = 3.5
-wander_time_min = 1.75
-wander_interval_max = 0.75
-wander_interval_min = 0.25
+wander_time_max = 1.5
+wander_time_min = 0.75
+wander_interval_max = 1.25
+wander_interval_min = 0.75
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.75, 0.75 )

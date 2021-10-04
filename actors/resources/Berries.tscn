@@ -11,5 +11,5 @@ z_index = -2
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 exclusion_radius = 60.0
-starting_amount = 100
+starting_amount = 10
 type = "berries"

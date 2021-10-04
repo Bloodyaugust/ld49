@@ -8,6 +8,7 @@ const ability_resources:Array = [
 ]
 const ability_usable_color:Color = Color(1, 1, 1, 0.3)
 const ability_unusable_color:Color = Color(1, 0, 0, 0.3)
+const _placeable_rect:Rect2 = Rect2(Vector2(-457, -502), Vector2(910, 955))
 
 onready var _icon:Sprite = find_node("AbilityIcon")
 onready var _resources_container = get_tree().get_root().find_node("Resources", true, false)
@@ -24,6 +25,9 @@ func _ability_usable() -> bool:
     return false
 
   if ability_cooldowns[_active_ability.type] >= 0:
+    return false
+
+  if !_placeable_rect.has_point(_mouse_position):
     return false
 
   for _resource in _resources:
@@ -78,6 +82,7 @@ func _unhandled_input(event):
   var _active_ability:Resource = Store.state.active_ability
 
   if _active_ability && event is InputEventMouseButton && event.pressed:
+    print("mouse pos: " + str(_icon.get_global_mouse_position()))
     if event.button_index == BUTTON_RIGHT:
       Store.set_state("active_ability", null)
 

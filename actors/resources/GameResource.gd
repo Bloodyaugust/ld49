@@ -24,6 +24,9 @@ func consume(amount) -> void:
 
   if _amount <= 0:
     queue_free()
+    var _new_resources_state = Store.state.resources.duplicate(true)
+    _new_resources_state[type] -= 1
+    Store.set_state("resources", _new_resources_state)
 
 func _draw():
   if Store.state.active_ability:
