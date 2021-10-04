@@ -32,9 +32,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="LD49"
+config/name="Ecologist"
+config/description="Ecologist, an eco sim/god game, is about maintaining the stability of the environment while building its diversity. Add resources carefully, or you'll overload the small ecology! Made in under 72 hours for Ludum Dare 49 by Greyson Richey and Kelsey Peterson."
 run/main_scene="res://scenes/main.tscn"
-config/icon="res://icon.png"
+config/icon="res://media/splash-cover.png"
 
 [autoload]
 
