@@ -11,6 +11,6 @@ region_rect = Rect2( 2.328, 2.386, 2.883, 2.039 )
 script = ExtResource( 1 )
 type = "predator"
 spawn_move_range = 500.0
-spawn_rate = 1.0
+spawn_rate = 25.0
 spawn_scene = ExtResource( 2 )
 max_spawns = 1

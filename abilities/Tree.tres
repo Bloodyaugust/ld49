@@ -9,10 +9,10 @@ script = ExtResource( 1 )
 type = "tree"
 scale = Vector2( 0.35, 0.35 )
 icon = ExtResource( 2 )
-cooldown = 1.0
-max_active = 2
+cooldown = 10.0
+max_active = 4
 instantiates = ExtResource( 3 )
 requirements = [ {
-"amount": 8,
+"amount": 6,
 "type": "berries"
 } ]

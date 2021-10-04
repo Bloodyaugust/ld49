@@ -80,7 +80,8 @@ func _find_resource_target() -> void:
 func _on_consume_complete() -> void:
   match _state:
     creature_states.CONSUMING:
-      _resource_target.consume(consume_amount)
+      if GDUtil.reference_safe(_resource_target):
+        _resource_target.consume(consume_amount)
       _current_consume_meter = 0
     creature_states.DRINKING:
       _thirst = thirst_meter
