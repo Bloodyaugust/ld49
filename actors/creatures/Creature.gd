@@ -158,7 +158,7 @@ func _process(delta):
         global_position += global_position.direction_to(_wander_target) * _move_amount
         _time_to_idle -= delta
 
-  if _state == creature_states.CONSUMING && _resource_target.type in ["insect", "deer", "rodent"]:
+  if _state == creature_states.CONSUMING && GDUtil.reference_safe(_resource_target) && _resource_target.type in ["insect", "deer", "rodent"]:
     _resource_target.global_position = _mouth.global_position
 
 func _ready():

@@ -23,6 +23,7 @@ func consume(amount) -> void:
   _amount -= amount
 
   if _amount <= 0:
+    dead = true
     queue_free()
     var _new_resources_state = Store.state.resources.duplicate(true)
     _new_resources_state[type] -= 1
