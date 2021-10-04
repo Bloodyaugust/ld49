@@ -171,3 +171,5 @@ func _ready():
   var _new_creatures_state = Store.state.creatures.duplicate(true)
   _new_creatures_state[type] += 1
   Store.set_state("creatures", _new_creatures_state)
+
+  _animation_player.play("spawn")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://actors/creatures/Creature.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fly.png" type="Texture" id=2]
+[ext_resource path="res://actors/creatures/creature_spawn_animation_base.tres" type="Animation" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -72,7 +73,7 @@ wander_interval_max = 3.5
 wander_interval_min = 1.5
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.075, 0.075 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="Indicator" type="TextureRect" parent="Sprite"]
@@ -94,3 +95,4 @@ scale = Vector2( 13.3333, 13.3333 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 1 )
 anims/idle = SubResource( 2 )
+anims/spawn = ExtResource( 3 )
